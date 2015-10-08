@@ -10,7 +10,7 @@ A react native android module to control the android statusbar.
 
 This module is currently inactive
 ```bash
-# npm i --save react-native-android-statusbar
+ npm i --save react-native-android-statusbar
 ```
 
 * `android/settings.gradle`
@@ -52,7 +52,7 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
       .setBundleAssetName("index.android.bundle")
       .setJSMainModuleName("index.android")
       .addPackage(new MainReactPackage())
-      .addPackage(new StatusBarPackage())      // <------- add package
+      .addPackage(new StatusBarPackage(this))      // <------- add package, the 'this' is super important
       .setUseDeveloperSupport(BuildConfig.DEBUG)
       .setInitialLifecycleState(LifecycleState.RESUMED)
       .build();
@@ -79,14 +79,17 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
 ```js
 var StatusBarAndroid = require('react-native-android-statusbar');
 
+/* The following functions do not reflect on versions before 16 */
+StatusBarAndroid.hideStatusBar()
+StatusBarAndroid.showStatusBar()
 
-StatusBarAndroid.hideStatusBar() // Does not reflect on versions before 16
-StatusBarAndroid.showStatusBar() // Does not reflect on versions before 16
-StatusBarAndroid.setRGB(int red, int green, int blue);// Does not reflect on versions before 21
-StatusBarAndroid.setARGB(int alpha,int red, int green, int blue);// Does not reflect on versions before 21
-StatusBarAndroid.setHexColor('#AB1223'); // Does not reflect on versions before 21
-/*Supported formats are: #RRGGBB #AARRGGBB
-or one of the following names: 'red', 'blue', 'green', 'black', 'white', 'gray', 'cyan', 'magenta', 'yellow', 'lightgray', 'darkgray', 'grey', 'lightgrey', 'darkgrey', 'aqua', 'fuchsia', 'lime', 'maroon', 'navy', 'olive', 'purple', 'silver', 'teal'.*/
+/* The following functions do not reflect on versions before 21 */
+StatusBarAndroid.setRGB(int red, int green, int blue);
+StatusBarAndroid.setARGB(int alpha,int red, int green, int blue);
+StatusBarAndroid.setHexColor('#AB1223'); /*Supported formats are: #RRGGBB #AARRGGBB or :
+'red', 'blue', 'green', 'black', 'white', 'gray', 'cyan', 'magenta', 'yellow',
+'lightgray', 'darkgray', 'grey', 'lightgrey', 'darkgrey', 'aqua',
+'fuchsia', 'lime', 'maroon', 'navy', 'olive', 'purple', 'silver', 'teal'.*/
 
 
 ```
