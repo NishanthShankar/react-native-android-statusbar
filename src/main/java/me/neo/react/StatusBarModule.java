@@ -17,9 +17,9 @@ import com.facebook.react.bridge.ReadableArray;
  */
 public class StatusBarModule extends ReactContextBaseJavaModule {
     Activity mActivity = null;
-    public StatusBar(ReactApplicationContext reactContext) {
+    public StatusBar(ReactApplicationContext reactContext, Activity activity) {
         super(reactContext);
-        mActivity = MainActivity.getActivity();
+        mActivity = activity;
     }
 
     @Override
