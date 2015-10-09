@@ -61,13 +61,6 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
     setContentView(mReactRootView);
   }
 
-  //Add this static function
-  public static Activity getActivity(){
-      Activity activity = new Activity();
-      activity = mCurrentActivity;
-      return activity;
-  }
-
   ......
 
 }
