@@ -8,7 +8,6 @@ A react native android module to control the android statusbar.
 
 * install module
 
-This module is currently inactive
 ```bash
  npm i --save react-native-android-statusbar
 ```
