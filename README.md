@@ -1,6 +1,6 @@
-# React Native Android Status bar
+# Status bar for react-native android
 
-
+[![npm version](https://badge.fury.io/js/react-native-android-statusbar.svg)](https://badge.fury.io/js/react-native-android-statusbar)
 
 A react native android module to control the android statusbar.
 
@@ -8,7 +8,6 @@ A react native android module to control the android statusbar.
 
 * install module
 
-This module is currently inactive
 ```bash
  npm i --save react-native-android-statusbar
 ```
@@ -60,13 +59,6 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
     mReactRootView.startReactApplication(mReactInstanceManager, "ExampleRN", null);
 
     setContentView(mReactRootView);
-  }
-
-  //Add this static function
-  public static Activity getActivity(){
-      Activity activity = new Activity();
-      activity = mCurrentActivity;
-      return activity;
   }
 
   ......
