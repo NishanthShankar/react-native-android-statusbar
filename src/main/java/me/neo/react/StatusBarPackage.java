@@ -24,7 +24,7 @@ public class StatusBarPackage implements ReactPackage {
     }
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactApplicationContext) {
-        List<NativeModule> modules = new ArrayList<>();
+        List<NativeModule> modules = new ArrayList<NativeModule>();
         modules.add(new StatusBarModule(reactApplicationContext,mActivity));
         return modules;
     }
