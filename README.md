@@ -6,6 +6,16 @@ A react native android module to control the android statusbar.
 
 ## Setup
 
+There are five steps in the setup process
+
+1. install module
+2. update `android/settings.gradle`
+- update `android/app/build.gradle`
+- Register module in MainActivity.java
+- Rebuild and restart package manager
+
+
+
 * install module
 
 ```bash
@@ -65,6 +75,10 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
 
 }
 ```
+* Run `react-native run-android` from your project root directory
+
+
+
 
 ## Usage
 
