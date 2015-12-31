@@ -1,4 +1,4 @@
-# Status bar for react-native android
+# Status bar for React Native Android
 
 [![npm version](https://badge.fury.io/js/react-native-android-statusbar.svg)](https://badge.fury.io/js/react-native-android-statusbar)
 
