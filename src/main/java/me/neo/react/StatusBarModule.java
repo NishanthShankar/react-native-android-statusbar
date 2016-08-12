@@ -16,10 +16,8 @@ import com.facebook.react.bridge.ReadableArray;
  * Created by Nishanth Shankar on 9/24/15.
  */
 public class StatusBarModule extends ReactContextBaseJavaModule {
-    Activity mActivity = null;
-    public StatusBarModule(ReactApplicationContext reactContext, Activity activity) {
+    public StatusBarModule(ReactApplicationContext reactContext) {
         super(reactContext);
-        mActivity = activity;
     }
 
     @Override
@@ -46,11 +44,11 @@ public class StatusBarModule extends ReactContextBaseJavaModule {
     }
 
     void setStatusColor(final int color){
-        mActivity.runOnUiThread(new Runnable() {
+        getCurrentActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 if(Build.VERSION.SDK_INT >= 21){
-                    Window window = mActivity.getWindow();
+                    Window window = getCurrentActivity().getWindow();
                     window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
                     window.setStatusBarColor(color);
 
@@ -64,10 +62,10 @@ public class StatusBarModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void hideStatusBar(){
-        mActivity.runOnUiThread(new Runnable() {
+        getCurrentActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                View decorView = mActivity.getWindow().getDecorView();
+                View decorView = getCurrentActivity().getWindow().getDecorView();
                 // Hide the status bar.
                 int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
                 decorView.setSystemUiVisibility(uiOptions);
@@ -77,12 +75,12 @@ public class StatusBarModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void showStatusBar(){
-        mActivity.runOnUiThread(new Runnable() {
+        getCurrentActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 if(Build.VERSION.SDK_INT < 16)
                     return;
-                View decorView = mActivity.getWindow().getDecorView();
+                View decorView = getCurrentActivity().getWindow().getDecorView();
                 // Hide the status bar.
                 int uiOptions = View.SYSTEM_UI_FLAG_VISIBLE;
                 decorView.setSystemUiVisibility(uiOptions);
