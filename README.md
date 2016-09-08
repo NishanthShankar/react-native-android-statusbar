@@ -10,11 +10,9 @@ There are five steps in the setup process
 
 1. install module
 2. update `android/settings.gradle`
-- update `android/app/build.gradle`
-- Register module in MainActivity.java
-- Rebuild and restart package manager
-
-
+3. update `android/app/build.gradle`
+4. Register module in MainActivity.java or MainApplication.java (depending on your RN version)
+5. Rebuild and restart package manager
 
 * install module
 
@@ -39,7 +37,43 @@ dependencies {
     compile project(':react-native-android-statusbar')
 }
 ```  
-* register module on React Native >= 0.19 (in MainActivity.java)  
+
+* register module on **React Native >= 0.30** (in MainApplication.java)
+
+```java
+import com.facebook.react.ReactActivity;
+import com.facebook.react.ReactPackage;
+import com.facebook.react.shell.MainReactPackage;
+
+import java.util.Arrays;
+import java.util.List;
+
+import me.neo.react.StatusBarPackage; // <--- import
+
+public class MainApplication extends Application implements ReactApplication {
+
+    [...]
+
+    private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
+    
+     @Override
+     protected boolean getUseDeveloperSupport() {
+         return BuildConfig.DEBUG;
+     }
+
+     @Override
+     protected List<ReactPackage> getPackages() {
+       return Arrays.<ReactPackage>asList(
+         new MainReactPackage(),
+         new StatusBarPackage() // <------- add package
+       );
+     }
+    }
+}
+```  
+
+* register module on **React Native >= 0.19 and RN < 0.30** (in MainActivity.java)
+
 ```java
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactPackage;
@@ -82,9 +116,9 @@ public class MainActivity extends ReactActivity {
       );
     }
 }
-```  
+```
 
-* register module on React Native < 0.19 (in MainActivity.java)
+* register module on **React Native < 0.19** (in MainActivity.java)
 
 ```java
 import me.neo.react.StatusBarPackage;  // <--- import
